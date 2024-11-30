@@ -23,6 +23,6 @@ public class TestCase21 extends BaseTest
 	 productsPage.clickOnViewProduct();
 	 product1Page.checkItemsOnPage();
 	 product1Page.writeReview(writeReviewData);
-	 product1Page.checkReviewSuccessMessage();
+	 product1Page.checkReviewSuccessMessage(); de facut si asertia
  }
 }
