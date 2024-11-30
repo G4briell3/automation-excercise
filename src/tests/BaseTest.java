@@ -20,6 +20,7 @@ import TestData.classes.LoginData;
 import TestData.classes.PaymentInformation;
 import TestData.classes.ProductDetails;
 import TestData.classes.SignupData;
+import TestData.classes.WriteReview;
 import pages.AccountConfirmationPage;
 import pages.CartPage;
 import pages.ContactUsPage;
@@ -57,6 +58,7 @@ public class BaseTest
   public static ProductDetails product1Details=new ProductDetails("product1Details");
   public static DeliveryInformation deliveryBillingInfo=new DeliveryInformation("deliveryBillingDetails");
   public static PaymentInformation enterPaymentInformation=new PaymentInformation("paymentInformation");
+  public static WriteReview writeReviewData=new WriteReview("writeReviewInformation");
   
   @BeforeClass
   public static void setup()

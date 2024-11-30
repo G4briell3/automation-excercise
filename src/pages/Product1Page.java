@@ -1,11 +1,17 @@
 package pages;
 
+import java.time.Duration;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import TestData.classes.ProductDetails;
+import TestData.classes.WriteReview;
 
 
 public class Product1Page 
@@ -33,6 +39,11 @@ public class Product1Page
   private By productQuantityButton=By.xpath("//input[@id=\"quantity\"]");
   private By addToCartProduct=By.xpath("//button[@class=\"btn btn-default cart\"]");
   private By viewCartFromModal=By.xpath("//div[@class=\"modal-content\"]/descendant::a");
+  private By writeReviewNameField=By.xpath("//input[@id=\"name\"]");
+  private By writeReviewEmailField=By.xpath("//input[@id=\"email\"]");
+  private By writeReviewCommentField=By.xpath("//textarea[@id=\"review\"]");
+  private By submitReviewButton=By.xpath("//button[@id=\"button-review\"]");
+  private By writeReviewSuccessAlert=By.xpath("//div[@class=\"alert-success alert\"]/span");
   
   public void checkItemsOnPage()
   {
@@ -52,6 +63,10 @@ public class Product1Page
 		 driver.findElement(productBrand).isDisplayed();
 		 driver.findElement(productQuantityButton).isDisplayed();
 		 driver.findElement(addToCartProduct).isDisplayed();
+		 driver.findElement(writeReviewNameField).isDisplayed();
+		 driver.findElement(writeReviewEmailField).isDisplayed();
+		 driver.findElement(writeReviewCommentField).isDisplayed();
+		 driver.findElement(submitReviewButton).isDisplayed();
   }
   
   public void checkProductDetails(ProductDetails details) 
@@ -80,5 +95,19 @@ public class Product1Page
   public void clickViewCart()
   {
 	  driver.findElement(viewCartFromModal).click();
+  }
+  
+  public void writeReview(WriteReview information)
+  {
+	  driver.findElement(writeReviewNameField).sendKeys(information.getNameField());
+	  driver.findElement(writeReviewEmailField).sendKeys(information.getEmailField());
+	  driver.findElement(writeReviewCommentField).sendKeys(information.getReviewField());
+	  driver.findElement(submitReviewButton).click();
+  }
+  
+  public void checkReviewSuccessMessage()
+  {
+	  WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(5));
+	  WebElement successMessage=wait.until(ExpectedConditions.presenceOfElementLocated(writeReviewSuccessAlert));
   }
 } 

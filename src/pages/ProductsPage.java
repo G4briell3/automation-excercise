@@ -49,6 +49,7 @@ public class ProductsPage
  private By bibaCategoryFromBrandsSidebar=By.xpath("//a[@href=\"/brand_products/Biba\"]");
  private By productFromPage=By.xpath("//div[@class=\"col-sm-4\"]");
  
+ 
  public void checkItemsOnPage()
  {
 	 driver.findElement(homeIcon).isDisplayed();
