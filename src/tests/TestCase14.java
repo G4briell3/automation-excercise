@@ -40,6 +40,9 @@ public class TestCase14 extends BaseTest
 	 cartPage.addCommentInTextarea();
 	 cartPage.clickPlaceOrderButton();
 	 cartPage.enterPaymentInformation(enterPaymentInformation);
-	 de facut delete account si verificarea
+	 cartPage.clickDeleteAccountIcon();
+	 accountConfirmationPage.checkAccountDeletionMessage();
+	 accountConfirmationPage.clickContinue();
+	 
  }
 }

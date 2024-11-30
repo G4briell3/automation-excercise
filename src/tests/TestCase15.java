@@ -32,12 +32,14 @@ public class TestCase15 extends BaseTest
 	  mainPage.checkAccountCreation(newUser);
 	  mainPage.addProductsToCart();
 	  mainPage.clickCartIcon();
-	  cartPage.checkItemsOnPage();
+	  cartPage.checkItemsOnPageLoggedUser();
 	  cartPage.clickProceedToCheckout();
 	  cartPage.checkDeliveryBillingInformation(deliveryBillingInfo); 
 	  cartPage.addCommentInTextarea();
 	  cartPage.clickPlaceOrderButton();
 	  cartPage.enterPaymentInformation(enterPaymentInformation);
-	  de facut delete account si verificarea
+	  cartPage.clickDeleteAccountIcon();
+	  accountConfirmationPage.checkAccountDeletionMessage();
+	  accountConfirmationPage.clickContinue();
   }
 }

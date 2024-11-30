@@ -60,6 +60,7 @@ public class CartPage
  private By removeProduct2Button=By.xpath("//a[@class=\"cart_quantity_delete\"][@data-product-id=\"2\"]");
  private By removeProduct3Button=By.xpath("//a[@class=\"cart_quantity_delete\"][@data-product-id=\"3\"]");
  private By emptyCartMessage=By.xpath("//span[@id=\"empty_cart\"]/p[@class=\"text-center\"]");
+ private By deleteAccountButton=By.xpath("//a[@href=\"/delete_account\"]");
  
  //payment page (de mutat daca e cazul)
  private By nameOnCardTextbox=By.xpath("//input[@name=\"name_on_card\"]");
@@ -209,5 +210,10 @@ public class CartPage
 	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 	 WebElement successElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@id=\"empty_cart\"]")));
 	 Assert.assertTrue(successElement.getText().contains("Cart is empty!"));
+ }
+ 
+ public void clickDeleteAccountIcon()
+ {
+	 driver.findElement(deleteAccountButton).click();
  }
 }

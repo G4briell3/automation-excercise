@@ -33,7 +33,7 @@ public class TestCase1 extends BaseTest
 	  accountConfirmationPage.checkAccountConfirmationMessage();
 	  accountConfirmationPage.clickContinue();
 	  mainPage.checkAccountCreation(newUser);	
-	  mainPage.deleteAccount();
+	  mainPage.clickDeleteAccount();
 	  accountConfirmationPage.checkAccountDeletionMessage();
 	  accountConfirmationPage.clickContinue();
   }

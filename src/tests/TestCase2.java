@@ -22,9 +22,8 @@ public class TestCase2 extends BaseTest
 	 signupLoginPage.checkLoginVisibility();
 	 signupLoginPage.enterLoginDetails(loginInformation);	
 	 mainPage.checkAccountLogin(loginInformation);
-	 mainPage.deleteAccount();
+	 mainPage.clickDeleteAccount();
 	 accountConfirmationPage.checkAccountDeletionMessage();
-	 accountConfirmationPage.clickContinue();
-	 
+	 accountConfirmationPage.clickContinue();	 
  }
 }

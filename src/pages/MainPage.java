@@ -89,7 +89,7 @@ public class MainPage
 	 Assert.assertEquals(confirmationMessage, driver.findElement(userAutentificationIcon).getText());
  }
  
- public void deleteAccount()
+ public void clickDeleteAccount()
  {
 	 driver.findElement(deleteAccountButton).click();
  }
