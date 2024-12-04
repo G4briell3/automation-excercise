@@ -16,7 +16,7 @@ public class TestCase21 extends BaseTest
  }
  
  @Test
- public void test21()
+ public void test21() //Add review on product
  {
 	 mainPage.clickProducts();
 	 productsPage.checkItemsOnPage();

@@ -7,11 +7,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import TestData.classes.LoginData;
 import TestData.classes.SignupData;
+import Utils.PageScrool;
 
 
 public class MainPage 
@@ -21,6 +23,7 @@ public class MainPage
  public void jsClick(WebElement element) {
      JavascriptExecutor js = (JavascriptExecutor) driver;
      js.executeScript("arguments[0].click();", element);}
+ 
  
  public MainPage(WebDriver driver)
  {
@@ -51,6 +54,10 @@ public class MainPage
  private By leftSidebarCategory=By.xpath("//div[@class=\"left-sidebar\"][contains(.,\"Category\")]");
  private By womenCategoryFromPanel=By.xpath("//div[@class=\"panel panel-default\"]/descendant::a[@href=\"#Women\"]");
  private By topsSubcategoryFromWonenPanel=By.xpath("//div[@id=\"Women\"]/descendant::a[@href=\"/category_products/2\"]");
+ private By recommendedItemsTitle=By.xpath("//h2[contains(.,\"recommended items\")]");
+// private By addToCartRecommendedItem=By.xpath("//div[@id=\"recommended-item-carousel\"]/descendant::a[@class=\"btn btn-default add-to-cart\"][@data-product-id=\"1\"]");
+ private By viewCartFromModal=By.xpath("//div[@class=\"modal-content\"]/descendant::a");
+ 
  public void checkIconsOnPage()
  {
 	 WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
@@ -76,6 +83,7 @@ public class MainPage
 	 driver.findElement(addToCartProduct3).isDisplayed();
 	 driver.findElement(leftSidebarCategory).isDisplayed();
 	 driver.findElement(womenCategoryFromPanel).isDisplayed();
+	 driver.findElement(recommendedItemsTitle).isDisplayed();
  }
  
  public void clickSignupLoginButton()
@@ -168,5 +176,29 @@ public void clickWomenCategory()
 public void clickTopsFromWomenCategory()
 {
 	driver.findElement(topsSubcategoryFromWonenPanel).click();
+}
+public void checkRecommendedItemsTitle()
+{
+	Assert.assertEquals("RECOMMENDED ITEMS", driver.findElement(recommendedItemsTitle).getText());
+}
+
+public void scroolToBottom()
+{
+	WebElement recommendedItemsTitle=driver.findElement(By.xpath("//h2[contains(.,\"recommended items\")]"));
+	Actions actions = new Actions(driver);
+	actions.moveToElement(recommendedItemsTitle).perform();
+	//PageScrool.ScrrolToElement(driver.findElement(recommendedItemsTitle));
+}
+public void addToCartRecommendedItem() //any product can be selected from the carusel if you change data-product-id in the xpath 
+{
+	WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+	WebElement addToCartProduct1=driver.findElement(By.xpath("//div[@id=\"recommended-item-carousel\"]/descendant::a[@class=\"btn btn-default add-to-cart\"][@data-product-id=\"1\"]"));
+	WebElement addToCartWait=wait.until(ExpectedConditions.visibilityOf(addToCartProduct1));
+	addToCartWait.click();
+}
+
+public void clickViewCartFromModal()
+{
+	  driver.findElement(viewCartFromModal).click();
 }
 }

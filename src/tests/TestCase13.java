@@ -23,7 +23,7 @@ public class TestCase13 extends BaseTest
 	  product1Page.checkProductDetails(product1Details);
 	  product1Page.modifyProductquantity("4");
 	  product1Page.addToCartProduct();
-	  product1Page.clickViewCart();
+	  product1Page.clickViewCartFromModal();
 	  cartPage.checkProduct1InCart();
 	  
   }

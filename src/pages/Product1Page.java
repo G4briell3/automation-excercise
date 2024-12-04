@@ -92,7 +92,7 @@ public class Product1Page
   {
 	  driver.findElement(addToCartProduct).click();
   }
-  public void clickViewCart()
+  public void clickViewCartFromModal()
   {
 	  driver.findElement(viewCartFromModal).click();
   }
@@ -109,5 +109,7 @@ public class Product1Page
   {
 	  WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(5));
 	  WebElement successMessage=wait.until(ExpectedConditions.presenceOfElementLocated(writeReviewSuccessAlert));
+	  Assert.assertEquals("Thank you for your review.", successMessage.getText());
+	  
   }
 } 

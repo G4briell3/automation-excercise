@@ -7,19 +7,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class PageScrool 
 {
-	/*WebDriver driver;
+	 /*WebDriver driver;
 	
 	public  PageScrool()
 	{
 		this.driver=driver;
 	}*/
+	
   public static void ScroolDown(WebDriver driver)
   {
 		 JavascriptExecutor js = (JavascriptExecutor) driver;
 	     js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
   }
   
-  public static void ScrrolToElement(WebElement element)
+  public static void ScrrolToElement(WebElement element) //nu merge , deschide pagina noua. Vezi productsPage.clickAddToCartFirstProduct() pentru varianta
   {
 	  WebDriver driver = new ChromeDriver();
 	  JavascriptExecutor js = (JavascriptExecutor) driver;

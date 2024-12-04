@@ -70,6 +70,9 @@ public class CartPage
  private By expirationYearTextbox=By.xpath("//input[@name=\"expiry_year\"]");
  private By payAndConfirmOrderButton=By.xpath("//button[@id=\"submit\"]");
  private By successAlertMessage=By.xpath("//div[@class=\"alert-success alert\"][contains(.,\"order\")]");
+ //end of payment page
+ 
+ private By product1FromRecommended=By.xpath("//a[@href=\"/product_details/1\"]");
  
  public void checkItemsOnPage()
  {
@@ -215,5 +218,10 @@ public class CartPage
  public void clickDeleteAccountIcon()
  {
 	 driver.findElement(deleteAccountButton).click();
+ }
+ 
+ public void checkItemFromRecommendedItems() //if other product is selected in addToCart must be modified here too
+ {
+	 Assert.assertEquals("Blue Top", driver.findElement(product1FromRecommended).getText());
  }
 }
