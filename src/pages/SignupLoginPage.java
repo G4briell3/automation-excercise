@@ -29,7 +29,7 @@ public class SignupLoginPage
  private By loginErrorMessage=By.xpath("//p[contains(.,\"Your email or password is incorrect!\")]");
  private By signupErrorMessage=By.xpath("//p[contains(.,\"Email Address already exist!\")]");
  
- public void checkSignupVisibility()
+ public void checkIconsOnPage()
  {
 	 driver.findElement(signupHeaderText).isDisplayed();
 	 driver.findElement(signupNameInput).isDisplayed();

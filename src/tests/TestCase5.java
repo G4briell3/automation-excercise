@@ -20,7 +20,7 @@ public class TestCase5 extends BaseTest
   @Test
   public void Test5() //Register User with existing email
   {
-	  signupLoginPage.checkSignupVisibility();
+	  signupLoginPage.checkIconsOnPage();
 	  signupLoginPage.enterSignupDetailsExisting(createUser);
 	  signupLoginPage.checkSignupErrorMessage(); 
   }

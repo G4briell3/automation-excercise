@@ -96,7 +96,7 @@ public void fillDetails(EnterInformation user)
 	driver.findElement(createAccountButton).click();
 }
 
-public void selectDate(String day,String month,String year)
+public void selectDateOfBirth(String day,String month,String year)
 {
 	Select selectDate= new Select(driver.findElement(dayOfBirth));
 	Select selectMonth=new Select(driver.findElement(monthOfBirth));

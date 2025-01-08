@@ -23,11 +23,11 @@ public class TestCase14 extends BaseTest
 	 cartPage.checkItemsOnPage();
 	 cartPage.clickProceedToCheckout();
 	 cartPage.clickRegisterLoginFromModal();
-	 signupLoginPage.checkSignupVisibility();
+	 signupLoginPage.checkIconsOnPage();
 	 signupLoginPage.enterSignupDetails(newUser);
 	 enterAccountInformationPage.checkElementsOnPage();
 	 enterAccountInformationPage.selectTitle("Mrs"); //values Mr || Mrs	  
-	 enterAccountInformationPage.selectDate("4","September","1954"); //Enter : day,month,year
+	 enterAccountInformationPage.selectDateOfBirth("4","September","1954"); //Enter : day,month,year
 	 enterAccountInformationPage.selectCountry("United States"); //Options: India,United States,Canada,Australia,Israel,New Zealand,Singapore
 	 enterAccountInformationPage.fillDetails(accountInformation);
 	 accountConfirmationPage.checkIconsOnPage();

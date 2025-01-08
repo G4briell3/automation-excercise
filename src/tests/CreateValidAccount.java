@@ -22,11 +22,11 @@ public class CreateValidAccount extends BaseTest
   {
 	  mainPage.checkIconsOnPage();
 	  mainPage.clickSignupLoginButton();
-	  signupLoginPage.checkSignupVisibility();
+	  signupLoginPage.checkIconsOnPage();
 	  signupLoginPage.enterSignupDetailsExisting(createUser);
 	  enterAccountInformationPage.checkElementsOnPage();
 	  enterAccountInformationPage.selectTitle("Mrs"); //values Mr || Mrs	  
-	  enterAccountInformationPage.selectDate("4","September","1954"); //Enter : day,month,year
+	  enterAccountInformationPage.selectDateOfBirth("4","September","1954"); //Enter : day,month,year
 	  enterAccountInformationPage.selectCountry("United States"); //Options: India,United States,Canada,Australia,Israel,New Zealand,Singapore
 	  enterAccountInformationPage.fillDetails(createAccount);
 	  accountConfirmationPage.checkIconsOnPage();
