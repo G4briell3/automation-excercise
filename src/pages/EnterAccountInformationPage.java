@@ -1,7 +1,9 @@
 package pages;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -9,8 +11,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import TestData.classes.EnterInformation;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import TestData.classes.EnterInformation;
+import java.io.File;
+import java.io.IOException;
 
 
 
@@ -45,6 +50,7 @@ private By cityInput=By.id("city");
 private By zipCodeInput=By.id("zipcode");
 private By mobileNumberInput=By.id("mobile_number");
 private By createAccountButton=By.xpath("//button[contains(.,\"Create Account\")]");
+String titleFromForm = "";
 
 public void checkElementsOnPage()
 {
@@ -74,6 +80,8 @@ public void selectTitle(String nume)
 {
 	WebElement select=driver.findElement(selectTitleButton(nume));
 	select.click();
+	titleFromForm=driver.findElement(By.xpath("//label[@class=\"top\"]")).getText();
+	//System.out.println("1 = "+ titleFromForm);
 	//Assert.assertTrue(false);
 }
 
@@ -93,9 +101,14 @@ public void fillDetails(EnterInformation user)
 	driver.findElement(mobileNumberInput).sendKeys(user.getMobileNumber());
 	driver.findElement(receiveSpecialOffersCheckboc).click();
 	driver.findElement(signUpForNewsletterCheckbox).click();
-	driver.findElement(createAccountButton).click();
+	
 }
 
+
+public void clickCreateAccountButton()
+{
+	driver.findElement(createAccountButton).click();
+}
 public void selectDateOfBirth(String day,String month,String year)
 {
 	Select selectDate= new Select(driver.findElement(dayOfBirth));
@@ -112,4 +125,53 @@ public void selectCountry(String country)
 	selectCountry.selectByValue(country);
 }
 
+public void storredDataFromForm()
+{
+	// System.out.println(titleFromForm);		
+	/*System.out.println("firstName = "+ driver.findElement(firstNameInput).getAttribute("value"));
+	System.out.println("last name= "+driver.findElement(lastNameInput).getAttribute("value"));
+	System.out.println("company ="+driver.findElement(companyInput).getAttribute("value"));
+	System.out.println("addr1 ="+driver.findElement(mandatorryAddressInput).getAttribute("value"));
+	System.out.println("addr2="+driver.findElement(address2Input).getAttribute("value"));
+	System.out.println("city="+driver.findElement(cityInput).getAttribute("value"));
+	System.out.println("state="+driver.findElement(stateInput).getAttribute("value"));	
+	System.out.println("zip="+driver.findElement(zipCodeInput).getAttribute("value"));
+	System.out.println("country="+driver.findElement(countrySelect).getAttribute("value"));
+	System.out.println("mob="+driver.findElement(mobileNumberInput).getAttribute("value"));*/
+	String title=titleFromForm;
+	String firstName=driver.findElement(firstNameInput).getAttribute("value");
+	String lastName=driver.findElement(lastNameInput).getAttribute("value");
+	String company=driver.findElement(companyInput).getAttribute("value");
+	String addr1=driver.findElement(mandatorryAddressInput).getAttribute("value");
+	String addr2=driver.findElement(address2Input).getAttribute("value");
+	String city=driver.findElement(cityInput).getAttribute("value");
+	String state=driver.findElement(stateInput).getAttribute("value");
+	String zip=driver.findElement(zipCodeInput).getAttribute("value");
+	String country=driver.findElement(countrySelect).getAttribute("value");
+	String mobile=driver.findElement(mobileNumberInput).getAttribute("value");
+	Map<String,String> data=new HashMap<>();
+	data.put("title", title);
+	data.put("firstName", firstName);
+	data.put("lastName", lastName);
+	data.put("company",company);
+	data.put("addr1",addr1);
+	data.put("addr2",addr2);
+	data.put("city",city);
+	data.put("state",state);
+	data.put("zip",zip);
+	data.put("country",country);
+	data.put("mobile",mobile);
+	ObjectMapper objectMapper= new ObjectMapper();
+	try
+	{
+		objectMapper.writeValue(new File("data.json"), data);
+		System.out.println("Data written to JSON file.");
+	}
+	catch(IOException e)
+	{
+		e.printStackTrace();
+	}
+	File file = new File("data.json");
+	System.out.println("File path: " + file.getAbsolutePath());
+}
 }

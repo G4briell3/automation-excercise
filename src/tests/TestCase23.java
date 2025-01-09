@@ -22,15 +22,20 @@ public class TestCase23  extends BaseTest
 	  mainPage.clickSignupLoginButton();
 	  signupLoginPage.checkIconsOnPage();
   	  signupLoginPage.enterSignupDetails(createUser);
-  	  enterAccountInformationPage.selectTitle("Mrs");  	  
+  	  enterAccountInformationPage.selectTitle("Mrs");  	
+  	
   	  enterAccountInformationPage.selectCountry("United States");
   	  enterAccountInformationPage.selectDateOfBirth("20", "July", "1984"); 
-  	  enterAccountInformationPage.fillDetails(accountInformation); //de scos click pe create account afara
-  	  
+  	  enterAccountInformationPage.fillDetails(accountInformation); 
+  	  //Thread.sleep(3000);
+  	  enterAccountInformationPage.storredDataFromForm();
+  	  //Thread.sleep(3000);
+  	  enterAccountInformationPage.clickCreateAccountButton();
   	  accountConfirmationPage.checkIconsOnPage();  	  
-  	  accountConfirmationPage.checkAccountConfirmationMessage(); 	  
+  	  accountConfirmationPage.checkAccountConfirmationMessage(); 	
+  	  
   	  accountConfirmationPage.clickContinue();
-  	  Thread.sleep(3000); de vazut de ce nu merge
+  	  //Thread.sleep(3000);
   	  Alert alert=driver.switchTo().alert();
   	  alert.accept();
   	  //Thread.sleep(10000);
