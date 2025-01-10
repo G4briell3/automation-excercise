@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import TestData.classes.DeliveryBillingInformation;
 import TestData.classes.EnterInformation;
 import java.io.File;
 import java.io.IOException;
@@ -125,7 +126,7 @@ public void selectCountry(String country)
 	selectCountry.selectByValue(country);
 }
 
-public void storredDataFromForm()
+public void storringDataFromForm()
 {
 	// System.out.println(titleFromForm);		
 	/*System.out.println("firstName = "+ driver.findElement(firstNameInput).getAttribute("value"));
@@ -150,15 +151,15 @@ public void storredDataFromForm()
 	String country=driver.findElement(countrySelect).getAttribute("value");
 	String mobile=driver.findElement(mobileNumberInput).getAttribute("value");
 	Map<String,String> data=new HashMap<>();
-	data.put("title", title);
-	data.put("firstName", firstName);
-	data.put("lastName", lastName);
+	data.put("title", title+" "+firstName+" "+lastName);
+	//data.put("firstName", firstName);
+	//data.put("lastName", lastName);
 	data.put("company",company);
 	data.put("addr1",addr1);
 	data.put("addr2",addr2);
-	data.put("city",city);
-	data.put("state",state);
-	data.put("zip",zip);
+	data.put("city",city+" "+state+" "+zip);
+	//data.put("state",state);
+	//data.put("zip",zip);
 	data.put("country",country);
 	data.put("mobile",mobile);
 	ObjectMapper objectMapper= new ObjectMapper();
@@ -171,7 +172,42 @@ public void storredDataFromForm()
 	{
 		e.printStackTrace();
 	}
-	File file = new File("data.json");
+	File file = new File("data.json"); /*D:/work/automation-excercise/src/TestData/files/*/
 	System.out.println("File path: " + file.getAbsolutePath());
+	
+}
+
+public void readingDataAndCompareWithCheckoutData()
+{
+	ObjectMapper objectMapper= new ObjectMapper();
+	try
+	{
+		Map<String,String> data=objectMapper.readValue(new File("data.json"),Map.class);
+		String titleFromJson=data.get("title"); //de verificat ca nu ia bine datele de pe pagina
+		String titleFromPage=driver.findElement(By.xpath("//ul[@id=\"address_delivery\"]/li[@class=\"address_firstname address_lastname\"]")).getText();
+		//Assert.assertEquals(titleFromJson, titleFromPage);
+		List<WebElement> companyAndAddresses = driver.findElements(By.xpath("//ul[@id=\"address_delivery\"]/li[@class=\"address_address1 address_address2\"]"));
+		String companyText="";
+		String mainAddressText="";
+		String secondAddressText="";
+		for (int i=0;i<companyAndAddresses.size();i++)
+		{
+			companyText=companyAndAddresses.get(0).getText();
+			mainAddressText=companyAndAddresses.get(1).getText();
+			secondAddressText=companyAndAddresses.get(2).getText();
+		}
+		//System.out.println(companyText);
+		//System.out.println(mainAddressText);
+		//System.out.println(secondAddressText);	
+		String companyFromJson=data.get("company");
+		Assert.assertEquals(companyFromJson, companyText);	
+		de facut mai departe de la main Address in jos
+	}
+	catch (IOException e)
+	{
+		e.printStackTrace();
+	}
+	
+
 }
 }

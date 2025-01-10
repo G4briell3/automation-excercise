@@ -30,12 +30,14 @@ public class TestCase14 extends BaseTest
 	 enterAccountInformationPage.selectDateOfBirth("4","September","1954"); //Enter : day,month,year
 	 enterAccountInformationPage.selectCountry("United States"); //Options: India,United States,Canada,Australia,Israel,New Zealand,Singapore
 	 enterAccountInformationPage.fillDetails(accountInformation);
+	 enterAccountInformationPage.clickCreateAccountButton();
 	 accountConfirmationPage.checkIconsOnPage();
 	 accountConfirmationPage.checkAccountConfirmationMessage();
 	 accountConfirmationPage.clickContinue();
 	 mainPage.checkAccountCreation(newUser);	
 	 mainPage.clickCartIcon();
 	 cartPage.clickProceedToCheckout(); 
+	 Thread.sleep(3000);
 	 cartPage.checkDeliveryBillingInformation(deliveryBillingInfo);
 	 cartPage.addCommentInTextarea();
 	 cartPage.clickPlaceOrderButton();

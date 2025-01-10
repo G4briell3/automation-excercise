@@ -28,23 +28,29 @@ public class TestCase23  extends BaseTest
   	  enterAccountInformationPage.selectDateOfBirth("20", "July", "1984"); 
   	  enterAccountInformationPage.fillDetails(accountInformation); 
   	  //Thread.sleep(3000);
-  	  enterAccountInformationPage.storredDataFromForm();
-  	  //Thread.sleep(3000);
+  	  enterAccountInformationPage.storringDataFromForm();
+  	  
+  	  //Alert alert=driver.switchTo().alert();
+  	  //alert.accept();
   	  enterAccountInformationPage.clickCreateAccountButton();
   	  accountConfirmationPage.checkIconsOnPage();  	  
   	  accountConfirmationPage.checkAccountConfirmationMessage(); 	
   	  
   	  accountConfirmationPage.clickContinue();
   	  //Thread.sleep(3000);
-  	  Alert alert=driver.switchTo().alert();
-  	  alert.accept();
+
   	  //Thread.sleep(10000);
   	  mainPage.checkAccountCreation(createUser);
   	  mainPage.addProductsToCart();
   	  mainPage.clickCartIcon();
   	  cartPage.checkItemsOnPageLoggedUser();
   	  cartPage.clickProceedToCheckout();
-  	  cartPage.checkDeliveryBillingInformation(deliveryBillingInfo); //de facut aici altfel(poate schimbat jsonul cu cel de la inregistrare) 
-  	  
+  	  enterAccountInformationPage.readingDataAndCompareWithCheckoutData(); //de mutat in cart page
+  	  //cartPage.checkDeliveryBillingInformation(deliveryBillingInfo); //de facut aici altfel(poate schimbat jsonul cu cel de la inregistrare) 
+  	 cartPage.clickPlaceOrderButton();
+	 cartPage.enterPaymentInformation(enterPaymentInformation);
+	 cartPage.clickDeleteAccountIcon();
+	 accountConfirmationPage.checkAccountDeletionMessage();
+	 accountConfirmationPage.clickContinue();
   }
 }

@@ -13,7 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import TestData.classes.ContactUs;
-
+import TestData.classes.DeliveryBillingInformation;
 import TestData.classes.DeliveryInformation;
 import TestData.classes.EnterInformation;
 import TestData.classes.LoginData;
@@ -59,6 +59,7 @@ public class BaseTest
   public static DeliveryInformation deliveryBillingInfo=new DeliveryInformation("deliveryBillingDetails");
   public static PaymentInformation enterPaymentInformation=new PaymentInformation("paymentInformation");
   public static WriteReview writeReviewData=new WriteReview("writeReviewInformation");
+  //public static DeliveryBillingInformation deliveryAndBillingInfoDivided=new DeliveryBillingInformation("data");
   
   @BeforeClass
   public static void setup()
