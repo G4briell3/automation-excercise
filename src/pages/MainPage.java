@@ -86,6 +86,29 @@ public class MainPage
 	 driver.findElement(recommendedItemsTitle).isDisplayed();
  }
  
+ public void recheckIconsOnPage()
+ {
+	 driver.findElement(homeIcon).isDisplayed();
+	 driver.findElement(productsIcon).isDisplayed();
+	 driver.findElement(cartIcon).isDisplayed();
+	 driver.findElement(signupLoginIcon).isDisplayed();
+	 driver.findElement(testCasesIcon).isDisplayed();
+	 driver.findElement(apiTestingIcon).isDisplayed();
+	 driver.findElement(videoTutorialsIcon).isDisplayed();
+	 driver.findElement(contactUsIcon).isDisplayed();
+	 driver.findElement(sliderCarousel).isDisplayed();
+	 driver.findElement(categoryListTitle).isDisplayed();
+	 driver.findElement(subscriptionText).isDisplayed();
+	 driver.findElement(subscribeEmailInputField).isDisplayed();
+	 driver.findElement(subscriptionButton).isDisplayed();
+	 driver.findElement(viewProduct1).isDisplayed();
+	 driver.findElement(addToCartProduct1).isDisplayed();
+	 driver.findElement(addToCartProduct2).isDisplayed();
+	 driver.findElement(addToCartProduct3).isDisplayed();
+	 driver.findElement(leftSidebarCategory).isDisplayed();
+	 driver.findElement(womenCategoryFromPanel).isDisplayed();
+	 driver.findElement(recommendedItemsTitle).isDisplayed();
+ }
  public void clickSignupLoginButton()
  {
 	 driver.findElement(signupLoginIcon).click();

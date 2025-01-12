@@ -22,6 +22,7 @@ public class TestCase20 extends BaseTest
 	  productsPage.checkItemsOnPage();
 	  productsPage.searchProduct("Blue");
 	  productsPage.verifySearchedProductPageText();
-	  productsPage.checkListItemsAfterSearch("Blue");	  
+	  productsPage.checkListItemsAfterSearch("Blue");	 
+	  de facut mai departe add to cart and all ....
   }
 }

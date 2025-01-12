@@ -21,7 +21,6 @@ public class TestCase12 extends BaseTest
 	  mainPage.clickProducts();
 	  productsPage.clickAddToCartFirstProduct();
 	  productsPage.clickContinueShoppingModal();
-	  //Thread.sleep(3000);
 	  productsPage.clickAddToCartSecondProduct();
 	  productsPage.clickContinueShoppingModal();
 	  productsPage.clickCartIcon();

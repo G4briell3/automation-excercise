@@ -35,6 +35,6 @@ public class TestCasesPage
 		 driver.findElement(apiTestingIcon).isDisplayed();
 		 driver.findElement(videoTutorialsIcon).isDisplayed();
 		 driver.findElement(contactUsIcon).isDisplayed();
-         Assert.assertEquals(" TEST CASES", driver.findElement(pageTitle).getText());
+         Assert.assertEquals("TEST CASES", driver.findElement(pageTitle).getText());
   }
 }

@@ -25,6 +25,6 @@ public class TestCase6 extends BaseTest
 		contactUsPage.clickSubmit();
 		contactUsPage.checkSuccessMessageDisplay();
 		contactUsPage.clickHomeButton();
-		mainPage.checkIconsOnPage();
+		mainPage.recheckIconsOnPage();
 	}
 }

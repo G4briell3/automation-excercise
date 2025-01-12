@@ -29,7 +29,8 @@ public class CreateValidAccount extends BaseTest
 	  enterAccountInformationPage.selectDateOfBirth("4","September","1954"); //Enter : day,month,year
 	  enterAccountInformationPage.selectCountry("United States"); //Options: India,United States,Canada,Australia,Israel,New Zealand,Singapore
 	  enterAccountInformationPage.fillDetails(createAccount);
-	  accountConfirmationPage.checkIconsOnPage();
+	  enterAccountInformationPage.clickCreateAccountButton();
+	  accountConfirmationPage.checkIconsOnPage();	  
 	  accountConfirmationPage.checkAccountConfirmationMessage();
 	  accountConfirmationPage.clickContinue();
 	  mainPage.checkAccountCreation(createUser);		  

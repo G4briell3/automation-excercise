@@ -36,8 +36,7 @@ public class TestCase14 extends BaseTest
 	 accountConfirmationPage.clickContinue();
 	 mainPage.checkAccountCreation(newUser);	
 	 mainPage.clickCartIcon();
-	 cartPage.clickProceedToCheckout(); 
-	 Thread.sleep(3000);
+	 cartPage.clickProceedToCheckout(); 	 
 	 cartPage.checkDeliveryBillingInformation(deliveryBillingInfo);
 	 cartPage.addCommentInTextarea();
 	 cartPage.clickPlaceOrderButton();

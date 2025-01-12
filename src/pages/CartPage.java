@@ -1,8 +1,11 @@
 package pages;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.function.Function;
 
@@ -15,6 +18,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import TestData.classes.DeliveryBillingInformation;
 import TestData.classes.DeliveryInformation;
@@ -52,8 +58,17 @@ public class CartPage
  private By totalPriceOfProduct2=By.xpath("//tr[@id=\"product-2\"]/td[@class=\"cart_total\"]");
  private By proceedToCheckoutButton=By.xpath("//a[@class=\"btn btn-default check_out\"]");
  private By registerLoginFromModal=By.xpath("//a[@href=\"/login\"][contains(.,\"Register\")]");
- private By deliveryAddressInfo=By.xpath("//ul[@id=\"address_delivery\"]");
+ private By deliveryAddressInfo=By.xpath("//ul[@id=\"address_delivery\"]"); 
+ private By deliveryTitleFirstLastName=By.xpath("//ul[@id=\"address_delivery\"]/li[@class=\"address_firstname address_lastname\"]");
+ private By deliveryCityStateZipcode=By.xpath("//ul[@id=\"address_delivery\"]/li[@class=\"address_city address_state_name address_postcode\"]");
+ private By deliveryCountry=By.xpath("//ul[@id=\"address_delivery\"]/li[@class=\"address_country_name\"]");
+ private By deliveryMobile=By.xpath("//ul[@id=\"address_delivery\"]/li[@class=\"address_phone\"]");
  private By billingAddressInfo=By.xpath("//ul[@id=\"address_invoice\"]");
+ private By billingAddressFirstLastName=By.xpath("//ul[@id=\"address_invoice\"]/li[@class=\"address_firstname address_lastname\"]");
+ private By billingCityStateZipcode=By.xpath("//ul[@id=\"address_invoice\"]/li[@class=\"address_city address_state_name address_postcode\"]");
+ private By billingCountry=By.xpath("//ul[@id=\"address_invoice\"]/li[@class=\"address_country_name\"]");
+ private By billingMobile=By.xpath("//ul[@id=\"address_invoice\"]/li[@class=\"address_phone\"]");
+ 
  private By addComentTextbox=By.xpath("//textarea");
  private By placeOrderButton=By.xpath("//a[@class=\"btn btn-default check_out\"]");
  private By removeProduct1Button=By.xpath("//a[@class=\"cart_quantity_delete\"][@data-product-id=\"1\"]");
@@ -223,5 +238,62 @@ public class CartPage
  public void checkItemFromRecommendedItems() //if other product is selected in addToCart must be modified here too
  {
 	 Assert.assertEquals("Blue Top", driver.findElement(product1FromRecommended).getText());
+ }
+ 
+ public void readingDataAndCompareWithCheckoutData()
+ {
+ 	ObjectMapper objectMapper= new ObjectMapper();
+ 	try
+ 	{
+ 		//this part is for delivery address 		
+ 		Map<String,String> data=objectMapper.readValue(new File("data.json"),new TypeReference<Map<String, String>>() {});
+ 		String titleFromJson=data.get("title");  		
+ 		List<WebElement> deliveryCompanyAndAddresses = driver.findElements(By.xpath("//ul[@id=\"address_delivery\"]/li[@class=\"address_address1 address_address2\"]"));
+ 		String deliveryCompanyText="";
+ 		String deliveryMainAddressText="";
+ 		String deliverySecondAddressText=""; 
+ 		for (int i=0;i<deliveryCompanyAndAddresses.size();i++) //because all 3 hsve the same xpath ^ I have to go through them all with a loop
+ 		{
+ 			deliveryCompanyText=deliveryCompanyAndAddresses.get(0).getText();
+ 			deliveryMainAddressText=deliveryCompanyAndAddresses.get(1).getText();
+ 			deliverySecondAddressText=deliveryCompanyAndAddresses.get(2).getText();
+ 		}
+ 		String companyFromJson=data.get("company");
+ 		String mainAddressFromJson=data.get("addr1");
+ 		String secondAddress=data.get("addr2");
+ 		String cityStateZipcodeFromJson=data.get("cityStateZipcode");
+ 		String countryFromJson=data.get("country");
+ 		String mobileFromJson=data.get("mobile");
+ 		Assert.assertEquals(titleFromJson, driver.findElement(deliveryTitleFirstLastName).getText());
+ 		Assert.assertEquals(companyFromJson, deliveryCompanyText);	 		
+ 		Assert.assertEquals(mainAddressFromJson, deliveryMainAddressText); 		
+ 		Assert.assertEquals(secondAddress, deliverySecondAddressText); 		 		
+ 		Assert.assertEquals(cityStateZipcodeFromJson, driver.findElement(deliveryCityStateZipcode).getText()); 		
+ 		Assert.assertEquals(countryFromJson, driver.findElement(deliveryCountry).getText()); 		
+ 		Assert.assertEquals(mobileFromJson, driver.findElement(deliveryMobile).getText());
+ 		
+ 		//this part is for billing address 		
+ 		List<WebElement> billingCompanyAddresses=driver.findElements(By.xpath("//ul[@id=\"address_invoice\"]/li[@class=\"address_address1 address_address2\"]"));
+ 		String billingCompanyText="";
+ 		String billingMainAddressText="";
+ 		String billingSecondAddressText="";
+ 		for(int i=0;i<billingCompanyAddresses.size();i++)
+ 		{
+ 			billingCompanyText=billingCompanyAddresses.get(0).getText();
+ 			billingMainAddressText=billingCompanyAddresses.get(1).getText();
+ 			billingSecondAddressText=billingCompanyAddresses.get(2).getText();
+ 		}
+ 		Assert.assertEquals(titleFromJson, driver.findElement(billingAddressFirstLastName).getText());
+ 		Assert.assertEquals(companyFromJson, billingCompanyText) ;
+ 		Assert.assertEquals(mainAddressFromJson, billingMainAddressText);
+ 		Assert.assertEquals(secondAddress, billingSecondAddressText);
+ 		Assert.assertEquals(cityStateZipcodeFromJson, driver.findElement(billingCityStateZipcode).getText());
+ 		Assert.assertEquals(countryFromJson, driver.findElement(billingCountry).getText());
+ 		Assert.assertEquals(mobileFromJson, driver.findElement(billingMobile).getText());
+ 		}
+ 	catch (IOException e)
+ 	{
+ 		e.printStackTrace();
+ 	} 	
  }
 }

@@ -73,23 +73,18 @@ public void checkElementsOnPage()
 	driver.findElement(cityInput).isDisplayed();
 	driver.findElement(zipCodeInput).isDisplayed();
 	driver.findElement(mobileNumberInput).isDisplayed();
-	driver.findElement(createAccountButton).isDisplayed();
-	
+	driver.findElement(createAccountButton).isDisplayed();	
 }
 
 public void selectTitle(String nume)
 {
 	WebElement select=driver.findElement(selectTitleButton(nume));
 	select.click();
-	titleFromForm=driver.findElement(By.xpath("//label[@class=\"top\"]")).getText();
-	//System.out.println("1 = "+ titleFromForm);
-	//Assert.assertTrue(false);
+	titleFromForm=select.getAttribute("value");
 }
 
 public void fillDetails(EnterInformation user) 
 {
-	//driver.findElement(nameField).sendKeys(user.getUsername());	
-	//driver.findElement(emailField).sendKeys(user.getEmail()); //astea sunt inutile pentru ca sunt deja completate
 	driver.findElement(passwordField).sendKeys(user.getPassword());
 	driver.findElement(firstNameInput).sendKeys(user.getFirstName());
 	driver.findElement(lastNameInput).sendKeys(user.getLastName());
@@ -101,15 +96,14 @@ public void fillDetails(EnterInformation user)
 	driver.findElement(zipCodeInput).sendKeys(user.getZipCode());
 	driver.findElement(mobileNumberInput).sendKeys(user.getMobileNumber());
 	driver.findElement(receiveSpecialOffersCheckboc).click();
-	driver.findElement(signUpForNewsletterCheckbox).click();
-	
+	driver.findElement(signUpForNewsletterCheckbox).click();	
 }
-
 
 public void clickCreateAccountButton()
 {
 	driver.findElement(createAccountButton).click();
 }
+
 public void selectDateOfBirth(String day,String month,String year)
 {
 	Select selectDate= new Select(driver.findElement(dayOfBirth));
@@ -128,17 +122,6 @@ public void selectCountry(String country)
 
 public void storringDataFromForm()
 {
-	// System.out.println(titleFromForm);		
-	/*System.out.println("firstName = "+ driver.findElement(firstNameInput).getAttribute("value"));
-	System.out.println("last name= "+driver.findElement(lastNameInput).getAttribute("value"));
-	System.out.println("company ="+driver.findElement(companyInput).getAttribute("value"));
-	System.out.println("addr1 ="+driver.findElement(mandatorryAddressInput).getAttribute("value"));
-	System.out.println("addr2="+driver.findElement(address2Input).getAttribute("value"));
-	System.out.println("city="+driver.findElement(cityInput).getAttribute("value"));
-	System.out.println("state="+driver.findElement(stateInput).getAttribute("value"));	
-	System.out.println("zip="+driver.findElement(zipCodeInput).getAttribute("value"));
-	System.out.println("country="+driver.findElement(countrySelect).getAttribute("value"));
-	System.out.println("mob="+driver.findElement(mobileNumberInput).getAttribute("value"));*/
 	String title=titleFromForm;
 	String firstName=driver.findElement(firstNameInput).getAttribute("value");
 	String lastName=driver.findElement(lastNameInput).getAttribute("value");
@@ -151,15 +134,11 @@ public void storringDataFromForm()
 	String country=driver.findElement(countrySelect).getAttribute("value");
 	String mobile=driver.findElement(mobileNumberInput).getAttribute("value");
 	Map<String,String> data=new HashMap<>();
-	data.put("title", title+" "+firstName+" "+lastName);
-	//data.put("firstName", firstName);
-	//data.put("lastName", lastName);
+	data.put("title", title+". "+firstName+" "+lastName);
 	data.put("company",company);
 	data.put("addr1",addr1);
 	data.put("addr2",addr2);
-	data.put("city",city+" "+state+" "+zip);
-	//data.put("state",state);
-	//data.put("zip",zip);
+	data.put("cityStateZipcode",city+" "+state+" "+zip);
 	data.put("country",country);
 	data.put("mobile",mobile);
 	ObjectMapper objectMapper= new ObjectMapper();
@@ -172,42 +151,10 @@ public void storringDataFromForm()
 	{
 		e.printStackTrace();
 	}
-	File file = new File("data.json"); /*D:/work/automation-excercise/src/TestData/files/*/
+	File file = new File("data.json");
 	System.out.println("File path: " + file.getAbsolutePath());
 	
 }
 
-public void readingDataAndCompareWithCheckoutData()
-{
-	ObjectMapper objectMapper= new ObjectMapper();
-	try
-	{
-		Map<String,String> data=objectMapper.readValue(new File("data.json"),Map.class);
-		String titleFromJson=data.get("title"); //de verificat ca nu ia bine datele de pe pagina
-		String titleFromPage=driver.findElement(By.xpath("//ul[@id=\"address_delivery\"]/li[@class=\"address_firstname address_lastname\"]")).getText();
-		//Assert.assertEquals(titleFromJson, titleFromPage);
-		List<WebElement> companyAndAddresses = driver.findElements(By.xpath("//ul[@id=\"address_delivery\"]/li[@class=\"address_address1 address_address2\"]"));
-		String companyText="";
-		String mainAddressText="";
-		String secondAddressText="";
-		for (int i=0;i<companyAndAddresses.size();i++)
-		{
-			companyText=companyAndAddresses.get(0).getText();
-			mainAddressText=companyAndAddresses.get(1).getText();
-			secondAddressText=companyAndAddresses.get(2).getText();
-		}
-		//System.out.println(companyText);
-		//System.out.println(mainAddressText);
-		//System.out.println(secondAddressText);	
-		String companyFromJson=data.get("company");
-		Assert.assertEquals(companyFromJson, companyText);	
-		de facut mai departe de la main Address in jos
-	}
-	catch (IOException e)
-	{
-		e.printStackTrace();
-	}
-	
 
-}
 }
