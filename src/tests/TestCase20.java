@@ -16,13 +16,19 @@ public class TestCase20 extends BaseTest
   }
   
   @Test
-  public void test20()
+  public void test20() 
   {
 	  mainPage.clickProducts();
 	  productsPage.checkItemsOnPage();
-	  productsPage.searchProduct("Blue");
+	  productsPage.searchProduct("blue");
 	  productsPage.verifySearchedProductPageText();
-	  productsPage.checkListItemsAfterSearch("Blue");	 
-	  de facut mai departe add to cart and all ....
+	  productsPage.checkListItemsAfterSearch("blue");	 
+	  productsPage.addItemsToCartAfterSearch();
+	  productsPage.clickCartIcon();
+	  cartPage.checkItemsAddedFromSearch("blue");
+	  cartPage.clickSignupLoginButton();
+	  signupLoginPage.enterLoginDetails(loginInformation);
+	  mainPage.clickCartIcon();
+	  cartPage.checkItemsAddedFromSearch("blue");
   }
 }

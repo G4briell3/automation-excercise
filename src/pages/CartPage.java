@@ -296,4 +296,23 @@ public class CartPage
  		e.printStackTrace();
  	} 	
  }
+ 
+ public void checkItemsAddedFromSearch(String produs)
+ {
+	 List<WebElement> listaDinCos=driver.findElements(By.xpath("//div[@id=\"cart_info\"]/descendant::td[@class=\"cart_description\"]"));
+	 List<String> valoriListaDinCos= new ArrayList<String>();
+	 for(WebElement element:listaDinCos)
+	 {
+		 valoriListaDinCos.add(element.getText());
+	 }
+	 for(String element:valoriListaDinCos)
+	 {
+		 Assert.assertTrue(element.toLowerCase().contains(produs));
+	 }
+ }
+ 
+ public void clickSignupLoginButton()
+ {
+	 driver.findElement(signupLoginIcon).click();
+ }
 }

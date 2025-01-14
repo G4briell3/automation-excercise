@@ -85,7 +85,8 @@ public class ProductsPage
 	 String expectedTitle="SEARCHED PRODUCTS";
 	 if (!actualTitle.contains(expectedTitle)) 
 	 {
-		    throw new AssertionError("Title mismatch: " + actualTitle);
+		    throw new AssertionError("Title mismatch: " + actualTitle);  //to avoid the pop-ups that appears near "searched products"text
+		    
 	 }
 	 //Assert.assertEquals("SEARCHED PRODUCTS", driver.findElement(searchedProductsPageText).getText());
  }
@@ -176,11 +177,23 @@ public class ProductsPage
 	  boolean isKeywordPresent = false;
 	  for (String element:valoriListaProduse)
 	  {
-		  if (element != null && element.contains(keyWord)) {
+		  if (element != null && element.toLowerCase().contains(keyWord)) {
 		        isKeywordPresent = true;
 		        break;
 		    }	 
 	  }
 	  Assert.assertTrue(isKeywordPresent); 
  } 
+ 
+ 
+ public void addItemsToCartAfterSearch() 
+ {
+	List<WebElement> listaProduse=driver.findElements(By.xpath("//div[@class=\"features_items\"]/div[@class=\"col-sm-4\"]/div[@class=\"product-image-wrapper\"]/div[@class=\"single-products\"]/div[@class=\"productinfo text-center\"]/a"));
+    //List<String> valoriListaProduse= new ArrayList<String>();
+    for(WebElement element:listaProduse)
+    {
+    	element.click();
+    	clickContinueShoppingModal();    	
+    }
+ }
 }
