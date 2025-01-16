@@ -1,6 +1,12 @@
 package pages;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -10,6 +16,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import TestData.classes.LoginData;
 import TestData.classes.SignupData;
@@ -57,6 +65,7 @@ public class MainPage
  private By recommendedItemsTitle=By.xpath("//h2[contains(.,\"recommended items\")]");
 // private By addToCartRecommendedItem=By.xpath("//div[@id=\"recommended-item-carousel\"]/descendant::a[@class=\"btn btn-default add-to-cart\"][@data-product-id=\"1\"]");
  private By viewCartFromModal=By.xpath("//div[@class=\"modal-content\"]/descendant::a");
+ 
  
  public void checkIconsOnPage()
  {
@@ -191,6 +200,47 @@ public void addProductsToCart()
 	clickContinueShoppingModal();
 	driver.findElement(addToCartProduct3).click();
 	clickContinueShoppingModal();
+	addTojson();
+}
+
+public void addTojson()
+{
+	List<String> indexProduse=new ArrayList<String>();
+	List<WebElement> listaProduse=driver.findElements(By.xpath("//div[@class=\"productinfo text-center\"]/p"));
+	List<String> valorilistaProduse= new ArrayList<String>();
+	for(WebElement element:listaProduse)
+	{
+		valorilistaProduse.add(element.getText());
+	}
+	for(int i=0;i<valorilistaProduse.size();i++)
+	{
+		indexProduse.add("produs"+i);
+	}
+	//System.out.println(valorilistaProduse);
+	//System.out.println(indexProduse);
+	
+	//Map<String,String> products = new HashMap<>();
+	
+	//products.put("prod1", null)
+	for(int i=0;i<valorilistaProduse.size();i++)
+	{
+		
+		//products.put( indexProduse.get(i), valorilistaProduse.get(i));
+	}
+	//for (Map.Entry<String, String> entry : products.entrySet()) {
+	 //   System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());}
+	ObjectMapper objectMapper= new ObjectMapper();
+	try
+	{		
+		objectMapper.writeValue(new File("produse.json"), valorilistaProduse);
+		System.out.println("Data written to JSON file.");
+	}
+	catch(IOException e)
+	{
+		e.printStackTrace();
+	}
+	File file = new File("produse.json");
+	System.out.println("File path: " + file.getAbsolutePath());
 }
 public void clickWomenCategory()
 {

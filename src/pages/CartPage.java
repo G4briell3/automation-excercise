@@ -178,6 +178,12 @@ public class CartPage
 	 expectedBilling=expectedBilling.replaceAll("\\s+", " ");
 	 Assert.assertEquals(expectedBilling, actualBilling);
  }
+ 
+ public void reviewOrder()
+ {
+	 
+ }
+ 
  public void addCommentInTextarea() //throws InterruptedException
  {
 	 driver.findElement(addComentTextbox).sendKeys("description");
@@ -314,5 +320,35 @@ public class CartPage
  public void clickSignupLoginButton()
  {
 	 driver.findElement(signupLoginIcon).click();
+ }
+ 
+ public void checkIfProductsAreInCart()
+ {	 
+	 List<String> valoriListaProduse=new ArrayList<String>();
+	 ObjectMapper objectMapper=new ObjectMapper();
+	 try
+	 {
+		 valoriListaProduse =objectMapper.readValue(new File("produse.json"), new TypeReference<List<String>>() {});
+	 }
+	 catch(IOException e)
+	 {
+		 e.printStackTrace();
+	 }
+	 
+	 List<WebElement> productsFromCart=driver.findElements(By.xpath("//td[@class=\"cart_description\"]"));
+	 List<String> valueproductsFromCart=new ArrayList<String>();
+	 for(WebElement element:productsFromCart)
+	 {
+		 valueproductsFromCart.add(element.getText()); de vazut de ce nu scrie nimic aici 
+	 }
+	 for(String element:valueproductsFromCart)
+	 {
+		 for(String item:valoriListaProduse)
+		 {
+			 System.out.println("item "+item+"element "+element);
+			 Assert.assertTrue(item.contains(element));
+		 }
+	 }
+	 
  }
 }

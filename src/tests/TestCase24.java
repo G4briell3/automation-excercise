@@ -34,7 +34,8 @@ public class TestCase24 extends BaseTest
 	  accountConfirmationPage.clickContinue();
 	  mainPage.checkAccountCreation(newUser);
 	  mainPage.clickCartIcon();
+	  cartPage.checkIfProductsAreInCart();
 	  cartPage.clickProceedToCheckout();
-	  de facut mai departe
+	  
   }
 }
