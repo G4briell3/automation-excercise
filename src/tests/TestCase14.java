@@ -36,11 +36,15 @@ public class TestCase14 extends BaseTest
 	 accountConfirmationPage.clickContinue();
 	 mainPage.checkAccountCreation(newUser);	
 	 mainPage.clickCartIcon();
-	 cartPage.clickProceedToCheckout(); 	 
+	 cartPage.clickProceedToCheckout(); 
+	 cartPage.reviewOrder();
 	 cartPage.checkDeliveryBillingInformation(deliveryBillingInfo);
 	 cartPage.addCommentInTextarea();
 	 cartPage.clickPlaceOrderButton();
 	 cartPage.enterPaymentInformation(enterPaymentInformation);
+	 cartPage.clickPayAndConfirmOrder();
+	 cartPage.verifyOrderPlacementSuccessMessage();
+	 cartPage.clickContinueAfterOrder();
 	 cartPage.clickDeleteAccountIcon();
 	 accountConfirmationPage.checkAccountDeletionMessage();
 	 accountConfirmationPage.clickContinue();

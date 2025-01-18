@@ -31,7 +31,7 @@ public class TestCase16 extends BaseTest
 		 cartPage.clickPlaceOrderButton();
 		 cartPage.enterPaymentInformation(enterPaymentInformation);
 		 cartPage.clickPayAndConfirmOrder();
-		 cartPage.verifySuccessMessage();
+		 cartPage.verifyOrderPlacementSuccessMessage();
 		 //mainPage.clickDeleteAccount(); - de facut cu cart page
 		 //accountConfirmationPage.checkAccountDeletionMessage();
 		 //accountConfirmationPage.clickContinue();	

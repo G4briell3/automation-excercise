@@ -76,6 +76,9 @@ public class CartPage
  private By removeProduct3Button=By.xpath("//a[@class=\"cart_quantity_delete\"][@data-product-id=\"3\"]");
  private By emptyCartMessage=By.xpath("//span[@id=\"empty_cart\"]/p[@class=\"text-center\"]");
  private By deleteAccountButton=By.xpath("//a[@href=\"/delete_account\"]");
+ private By reviewOrderHeaader=By.xpath("//div[@class=\"step-one\"]/h2[contains(.,\"Review Your Order\")]");
+ private By downloadInvoiceButton=By.xpath("//a[@class=\"btn btn-default check_out\"]");
+ private By continueButton=By.xpath("//a[@class=\"btn btn-primary\"]");
  
  //payment page (de mutat daca e cazul)
  private By nameOnCardTextbox=By.xpath("//input[@name=\"name_on_card\"]");
@@ -177,13 +180,8 @@ public class CartPage
 	 actualBilling=actualBilling.replaceAll("\\s+", " ");
 	 expectedBilling=expectedBilling.replaceAll("\\s+", " ");
 	 Assert.assertEquals(expectedBilling, actualBilling);
- }
- 
- public void reviewOrder()
- {
-	 
- }
- 
+ } 
+
  public void addCommentInTextarea() //throws InterruptedException
  {
 	 driver.findElement(addComentTextbox).sendKeys("description");
@@ -195,7 +193,7 @@ public class CartPage
 	 driver.findElement(placeOrderButton).click();
  }
  
- public void enterPaymentInformation(PaymentInformation info) throws InterruptedException
+ public void enterPaymentInformation(PaymentInformation info) 
  {
 	 driver.findElement(nameOnCardTextbox).sendKeys(info.getEnterNameOnCard());
 	 driver.findElement(cardNumberTextbox).sendKeys(info.getEnterCardNumber());
@@ -203,12 +201,12 @@ public class CartPage
 	 driver.findElement(expirationMonthTextbox).sendKeys(info.getEnterExpirationMonth());
 	 driver.findElement(expirationYearTextbox).sendKeys(info.getEnterExpirationYear());	 
 }
- public void clickPayAndConfirmOrder() throws InterruptedException
+ public void clickPayAndConfirmOrder() 
  {
 	 driver.findElement(payAndConfirmOrderButton).click();
  }
  
- public void verifySuccessMessage()
+ public void verifyOrderPlacementSuccessMessage()
  {
 		driver.navigate().back();
 
@@ -322,8 +320,10 @@ public class CartPage
 	 driver.findElement(signupLoginIcon).click();
  }
  
- public void checkIfProductsAreInCart()
+ public void reviewOrder()
  {	 
+	 driver.findElement(reviewOrderHeaader).isDisplayed();
+	 Assert.assertTrue(driver.findElement(reviewOrderHeaader).getText().contains("Review Your Order"));
 	 List<String> valoriListaProduse=new ArrayList<String>();
 	 ObjectMapper objectMapper=new ObjectMapper();
 	 try
@@ -333,22 +333,30 @@ public class CartPage
 	 catch(IOException e)
 	 {
 		 e.printStackTrace();
-	 }
-	 
-	 List<WebElement> productsFromCart=driver.findElements(By.xpath("//td[@class=\"cart_description\"]"));
+	 }	 
+	 List<WebElement> productsFromCart=driver.findElements(By.xpath("//td[@class=\"cart_description\"]/h4/a"));
 	 List<String> valueproductsFromCart=new ArrayList<String>();
 	 for(WebElement element:productsFromCart)
 	 {
-		 valueproductsFromCart.add(element.getText()); de vazut de ce nu scrie nimic aici 
-	 }
+		 valueproductsFromCart.add(element.getText()); 
+	 }	 
+	 System.out.println("valueproductsFromCart ="+valueproductsFromCart);
 	 for(String element:valueproductsFromCart)
-	 {
-		 for(String item:valoriListaProduse)
-		 {
-			 System.out.println("item "+item+"element "+element);
-			 Assert.assertTrue(item.contains(element));
-		 }
-	 }
-	 
+	 {	
+		 System.out.println("produs  = "+element);
+		 Assert.assertTrue(valoriListaProduse.contains(element));		 
+	 }	 
+ }
+ 
+ public void clickContinueAfterOrder() 
+ {
+	 driver.findElement(continueButton).isDisplayed();
+	 driver.findElement(continueButton).click();
+ }
+ 
+ public void clickDownloadInvoice()
+ {
+	 driver.findElement(downloadInvoiceButton).isDisplayed();
+	 driver.findElement(downloadInvoiceButton).click();
  }
 }

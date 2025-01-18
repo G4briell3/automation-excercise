@@ -216,19 +216,6 @@ public void addTojson()
 	{
 		indexProduse.add("produs"+i);
 	}
-	//System.out.println(valorilistaProduse);
-	//System.out.println(indexProduse);
-	
-	//Map<String,String> products = new HashMap<>();
-	
-	//products.put("prod1", null)
-	for(int i=0;i<valorilistaProduse.size();i++)
-	{
-		
-		//products.put( indexProduse.get(i), valorilistaProduse.get(i));
-	}
-	//for (Map.Entry<String, String> entry : products.entrySet()) {
-	 //   System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());}
 	ObjectMapper objectMapper= new ObjectMapper();
 	try
 	{		
