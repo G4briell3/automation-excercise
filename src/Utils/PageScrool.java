@@ -20,6 +20,12 @@ public class PageScrool
 	     js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
   }
   
+  public static void ScroolUp(WebDriver driver)
+  {
+		 JavascriptExecutor js = (JavascriptExecutor) driver;
+		 js.executeScript("window.scrollTo(0, 0);");	  
+  }
+  
   public static void ScrrolToElement(WebElement element) //nu merge , deschide pagina noua. Vezi productsPage.clickAddToCartFirstProduct() pentru varianta
   {
 	  WebDriver driver = new ChromeDriver();

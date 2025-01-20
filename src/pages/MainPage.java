@@ -65,7 +65,8 @@ public class MainPage
  private By recommendedItemsTitle=By.xpath("//h2[contains(.,\"recommended items\")]");
 // private By addToCartRecommendedItem=By.xpath("//div[@id=\"recommended-item-carousel\"]/descendant::a[@class=\"btn btn-default add-to-cart\"][@data-product-id=\"1\"]");
  private By viewCartFromModal=By.xpath("//div[@class=\"modal-content\"]/descendant::a");
- 
+ private By scroolUpButton=By.xpath("//a[@id=\"scrollUp\"]");
+ private By pageTextHeader=By.xpath("//h2[contains(.,\"Full-Fledged practice website for Automation Engineers\")]");
  
  public void checkIconsOnPage()
  {
@@ -260,5 +261,16 @@ public void addToCartRecommendedItem() //any product can be selected from the ca
 public void clickViewCartFromModal()
 {
 	  driver.findElement(viewCartFromModal).click();
+}
+
+public void clickScroolUpButton()
+{
+	driver.findElement(scroolUpButton).click();
+	
+}
+
+public void checkPageTextFromCarousel()
+{
+	driver.findElement(pageTextHeader).isDisplayed();
 }
 }

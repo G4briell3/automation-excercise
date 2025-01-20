@@ -22,6 +22,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import TestData.Messages;
+import TestData.ProductsDetails;
 import TestData.classes.DeliveryBillingInformation;
 import TestData.classes.DeliveryInformation;
 import TestData.classes.PaymentInformation;
@@ -124,7 +126,7 @@ public class CartPage
  
  public void checkSubscriptionText()
  {
- 	Assert.assertEquals("SUBSCRIPTION", driver.findElement(subscriptionText).getText());
+ 	Assert.assertEquals(Messages.subscriptionText, driver.findElement(subscriptionText).getText());
  }
  
  public void enterSubscriptionEmail(String email)
@@ -136,28 +138,28 @@ public class CartPage
  public void checkSubscriptionMessage()
  {
  	driver.findElement(subscriptionConfirmationMessage).isDisplayed();
- 	Assert.assertEquals("You have been successfully subscribed!", driver.findElement(subscriptionConfirmationMessage).getText());
+ 	Assert.assertEquals(Messages.subscriptionConfirmationMessage, driver.findElement(subscriptionConfirmationMessage).getText());
  }
  public void checkFirstTwoProductsInCart()
  {
-	 Assert.assertEquals("Blue Top",driver.findElement(descriptionOfProduct1).getText());
-	 Assert.assertEquals("Men Tshirt",driver.findElement(descriptionOfProduct2).getText());
+	 Assert.assertEquals(ProductsDetails.descriptionOfProduct1,driver.findElement(descriptionOfProduct1).getText());
+	 Assert.assertEquals(ProductsDetails.descriptionOfProduct2,driver.findElement(descriptionOfProduct2).getText());
  }
  public void checkFirstTwoProductsDetails()
  {
-	 Assert.assertEquals("Rs. 500",driver.findElement(priceOfProduct1).getText());
-	 Assert.assertEquals("Rs. 400",driver.findElement(priceOfProduct2).getText());
-	 Assert.assertEquals("1", driver.findElement(quantityOfProduct1).getText());
-	 Assert.assertEquals("1", driver.findElement(quantityOfProduct2).getText());
-	 Assert.assertEquals("Rs. 500", driver.findElement(totalPriceOfProduct1).getText());
-	 Assert.assertEquals("Rs. 400", driver.findElement(totalPriceOfProduct2).getText());
+	 Assert.assertEquals(ProductsDetails.priceOfProduct1,driver.findElement(priceOfProduct1).getText());
+	 Assert.assertEquals(ProductsDetails.priceOfProduct2,driver.findElement(priceOfProduct2).getText());
+	 Assert.assertEquals(ProductsDetails.quantityOfProduct1, driver.findElement(quantityOfProduct1).getText());
+	 Assert.assertEquals(ProductsDetails.quantityOfProduct2, driver.findElement(quantityOfProduct2).getText());
+	 Assert.assertEquals(ProductsDetails.totalPriceOfProduct1, driver.findElement(totalPriceOfProduct1).getText());
+	 Assert.assertEquals(ProductsDetails.totalPriceOfProduct2, driver.findElement(totalPriceOfProduct2).getText());
  }
  public void checkProduct1InCart()
  {
-	 Assert.assertEquals("Blue Top",driver.findElement(descriptionOfProduct1).getText());
-	 Assert.assertEquals("Rs. 500",driver.findElement(priceOfProduct1).getText());
-	 Assert.assertEquals("4", driver.findElement(quantityOfProduct1).getText());
-	 Assert.assertEquals("Rs. 2000", driver.findElement(totalPriceOfProduct1).getText());
+	 Assert.assertEquals(ProductsDetails.descriptionOfProduct1,driver.findElement(descriptionOfProduct1).getText());
+	 Assert.assertEquals(ProductsDetails.priceOfProduct1,driver.findElement(priceOfProduct1).getText());
+	 Assert.assertEquals(ProductsDetails.quantityOf4Product1, driver.findElement(quantityOfProduct1).getText());
+	 Assert.assertEquals(ProductsDetails.totalPriceOf4Product1, driver.findElement(totalPriceOfProduct1).getText());
  }
  public void clickProceedToCheckout()
  {
@@ -215,16 +217,16 @@ public class CartPage
 
 		String successMessage = successElement.getText();
 		//System.out.println("Success Message: " + successMessage);
-		Assert.assertEquals("Your order has been placed successfully!", successMessage );
+		Assert.assertEquals(Messages.orderPlaceSuccessMessage, successMessage );
 		driver.navigate().forward();
  }
  
- public void removeProductsFromCart() throws InterruptedException
+ public void removeProductsFromCart() //throws InterruptedException
  {
 	 driver.findElement(removeProduct1Button).click();
 	 driver.findElement(removeProduct2Button).click();
 	 driver.findElement(removeProduct3Button).click();
-	 Thread.sleep(3000);
+	 //Thread.sleep(3000);
  }
  
  public void checkRemoveConfirmationMessage()
@@ -241,7 +243,7 @@ public class CartPage
  
  public void checkItemFromRecommendedItems() //if other product is selected in addToCart must be modified here too
  {
-	 Assert.assertEquals("Blue Top", driver.findElement(product1FromRecommended).getText());
+	 Assert.assertEquals(ProductsDetails.descriptionOfProduct1, driver.findElement(product1FromRecommended).getText());
  }
  
  public void readingDataAndCompareWithCheckoutData()

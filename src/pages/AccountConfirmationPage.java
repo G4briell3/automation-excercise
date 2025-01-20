@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import TestData.Messages;
+
 
 
 public class AccountConfirmationPage 
@@ -41,7 +43,7 @@ public class AccountConfirmationPage
   
   public void checkAccountConfirmationMessage()
   {
-	  Assert.assertEquals( "ACCOUNT CREATED!", driver.findElement(creationConfirmationMessage).getText());
+	  Assert.assertEquals( Messages.accountCreated, driver.findElement(creationConfirmationMessage).getText());
   }
   
   public void clickContinue()
@@ -51,6 +53,6 @@ public class AccountConfirmationPage
   
   public void checkAccountDeletionMessage()
   {
-	  Assert.assertEquals("ACCOUNT DELETED!", driver.findElement(deletionConfirmationMessage).getText());
+	  Assert.assertEquals(Messages.accountDeleted, driver.findElement(deletionConfirmationMessage).getText());
   }
 }

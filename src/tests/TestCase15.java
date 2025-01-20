@@ -35,12 +35,17 @@ public class TestCase15 extends BaseTest
 	  mainPage.clickCartIcon();
 	  cartPage.checkItemsOnPageLoggedUser();
 	  cartPage.clickProceedToCheckout();
+	  cartPage.reviewOrder();
 	  cartPage.checkDeliveryBillingInformation(deliveryBillingInfo); 
 	  cartPage.addCommentInTextarea();
 	  cartPage.clickPlaceOrderButton();
 	  cartPage.enterPaymentInformation(enterPaymentInformation);
+	  cartPage.clickPayAndConfirmOrder();
+	  cartPage.verifyOrderPlacementSuccessMessage();
+	  cartPage.clickContinueAfterOrder();
 	  cartPage.clickDeleteAccountIcon();
 	  accountConfirmationPage.checkAccountDeletionMessage();
 	  accountConfirmationPage.clickContinue();
+	  
   }
 }
