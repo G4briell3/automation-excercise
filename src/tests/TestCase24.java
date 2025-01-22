@@ -43,6 +43,6 @@ public class TestCase24 extends BaseTest
 	  cartPage.clickPayAndConfirmOrder();
 	  cartPage.verifyOrderPlacementSuccessMessage();
 	  cartPage.clickDownloadInvoice();
-	  de facut verificarea ca fisierul s-a downloadat
+	  //de facut verificarea ca fisierul s-a downloadat
   }
 }

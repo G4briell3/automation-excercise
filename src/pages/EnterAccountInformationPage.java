@@ -18,9 +18,6 @@ import TestData.classes.EnterInformation;
 import java.io.File;
 import java.io.IOException;
 
-
-
-
 public class EnterAccountInformationPage
 {
  WebDriver driver;
@@ -155,6 +152,5 @@ public void storringDataFromForm()
 	System.out.println("File path: " + file.getAbsolutePath());
 	
 }
-
 
 }

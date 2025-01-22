@@ -19,6 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import TestData.Messages;
 import TestData.classes.LoginData;
 import TestData.classes.SignupData;
 import Utils.PageScrool;
@@ -163,7 +164,7 @@ public void clickProducts()
 
 public void checkSubscriptionText()
 {
-	Assert.assertEquals("SUBSCRIPTION", driver.findElement(subscriptionText).getText());
+	Assert.assertEquals(Messages.SubscriptionText, driver.findElement(subscriptionText).getText());
 }
 
 public void enterSubscriptionEmail(String email)
@@ -174,7 +175,7 @@ public void enterSubscriptionEmail(String email)
 public void checkSubscriptionMessage()
 {
 	driver.findElement(subscriptionConfirmationMessage).isDisplayed();
-	Assert.assertEquals("You have been successfully subscribed!", driver.findElement(subscriptionConfirmationMessage).getText());
+	Assert.assertEquals(Messages.SubscriptionConfirmation, driver.findElement(subscriptionConfirmationMessage).getText());
 }
 
 public void clickCartIcon()
@@ -240,7 +241,7 @@ public void clickTopsFromWomenCategory()
 }
 public void checkRecommendedItemsTitle()
 {
-	Assert.assertEquals("RECOMMENDED ITEMS", driver.findElement(recommendedItemsTitle).getText());
+	Assert.assertEquals(Messages.RecomendedItemsText, driver.findElement(recommendedItemsTitle).getText());
 }
 
 public void scroolToBottom()

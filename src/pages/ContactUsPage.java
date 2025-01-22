@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import TestData.Messages;
+import TestData.URL;
 import TestData.classes.ContactUs;
 
 public class ContactUsPage 
@@ -29,7 +31,7 @@ public class ContactUsPage
   
   public void checkGetInTouchVisibility()
   {
-	  Assert.assertEquals("GET IN TOUCH", driver.findElement(getInTouchText).getText());
+	  Assert.assertEquals(Messages.GetInTouch, driver.findElement(getInTouchText).getText());
   }
   
   public void fillInformation(ContactUs information)
@@ -42,7 +44,7 @@ public class ContactUsPage
   
   public void uploadFile() throws InterruptedException
   {
-	  driver.findElement(uploadFileButton).sendKeys("C:\\Users\\Gabi\\Downloads\\chromedriver-win64(2)\\chromedriver-win64");
+	  driver.findElement(uploadFileButton).sendKeys(URL.UploadFilePath);
 	 
   }
   
@@ -55,7 +57,7 @@ public class ContactUsPage
   
   public void checkSuccessMessageDisplay()
   {
-	  Assert.assertEquals("Success! Your details have been submitted successfully.", driver.findElement(alertaSuccessMessage).getText());
+	  Assert.assertEquals(Messages.DetailSubmisionSuccess, driver.findElement(alertaSuccessMessage).getText());
   }
   
   public void clickHomeButton()

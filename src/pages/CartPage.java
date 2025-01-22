@@ -126,7 +126,7 @@ public class CartPage
  
  public void checkSubscriptionText()
  {
- 	Assert.assertEquals(Messages.subscriptionText, driver.findElement(subscriptionText).getText());
+ 	Assert.assertEquals(Messages.SubscriptionText, driver.findElement(subscriptionText).getText());
  }
  
  public void enterSubscriptionEmail(String email)
@@ -138,28 +138,28 @@ public class CartPage
  public void checkSubscriptionMessage()
  {
  	driver.findElement(subscriptionConfirmationMessage).isDisplayed();
- 	Assert.assertEquals(Messages.subscriptionConfirmationMessage, driver.findElement(subscriptionConfirmationMessage).getText());
+ 	Assert.assertEquals(Messages.SubscriptionConfirmation, driver.findElement(subscriptionConfirmationMessage).getText());
  }
  public void checkFirstTwoProductsInCart()
  {
-	 Assert.assertEquals(ProductsDetails.descriptionOfProduct1,driver.findElement(descriptionOfProduct1).getText());
-	 Assert.assertEquals(ProductsDetails.descriptionOfProduct2,driver.findElement(descriptionOfProduct2).getText());
+	 Assert.assertEquals(ProductsDetails.DescriptionOfProduct1,driver.findElement(descriptionOfProduct1).getText());
+	 Assert.assertEquals(ProductsDetails.DescriptionOfProduct2,driver.findElement(descriptionOfProduct2).getText());
  }
  public void checkFirstTwoProductsDetails()
  {
-	 Assert.assertEquals(ProductsDetails.priceOfProduct1,driver.findElement(priceOfProduct1).getText());
-	 Assert.assertEquals(ProductsDetails.priceOfProduct2,driver.findElement(priceOfProduct2).getText());
-	 Assert.assertEquals(ProductsDetails.quantityOfProduct1, driver.findElement(quantityOfProduct1).getText());
-	 Assert.assertEquals(ProductsDetails.quantityOfProduct2, driver.findElement(quantityOfProduct2).getText());
-	 Assert.assertEquals(ProductsDetails.totalPriceOfProduct1, driver.findElement(totalPriceOfProduct1).getText());
-	 Assert.assertEquals(ProductsDetails.totalPriceOfProduct2, driver.findElement(totalPriceOfProduct2).getText());
+	 Assert.assertEquals(ProductsDetails.PriceOfProduct1,driver.findElement(priceOfProduct1).getText());
+	 Assert.assertEquals(ProductsDetails.PriceOfProduct2,driver.findElement(priceOfProduct2).getText());
+	 Assert.assertEquals(ProductsDetails.QuantityOfProduct1, driver.findElement(quantityOfProduct1).getText());
+	 Assert.assertEquals(ProductsDetails.QuantityOfProduct2, driver.findElement(quantityOfProduct2).getText());
+	 Assert.assertEquals(ProductsDetails.TotalPriceOfProduct1, driver.findElement(totalPriceOfProduct1).getText());
+	 Assert.assertEquals(ProductsDetails.TotalPriceOfProduct2, driver.findElement(totalPriceOfProduct2).getText());
  }
  public void checkProduct1InCart()
  {
-	 Assert.assertEquals(ProductsDetails.descriptionOfProduct1,driver.findElement(descriptionOfProduct1).getText());
-	 Assert.assertEquals(ProductsDetails.priceOfProduct1,driver.findElement(priceOfProduct1).getText());
-	 Assert.assertEquals(ProductsDetails.quantityOf4Product1, driver.findElement(quantityOfProduct1).getText());
-	 Assert.assertEquals(ProductsDetails.totalPriceOf4Product1, driver.findElement(totalPriceOfProduct1).getText());
+	 Assert.assertEquals(ProductsDetails.DescriptionOfProduct1,driver.findElement(descriptionOfProduct1).getText());
+	 Assert.assertEquals(ProductsDetails.PriceOfProduct1,driver.findElement(priceOfProduct1).getText());
+	 Assert.assertEquals(ProductsDetails.QuantityOf4Product1, driver.findElement(quantityOfProduct1).getText());
+	 Assert.assertEquals(ProductsDetails.TotalPriceOf4Product1, driver.findElement(totalPriceOfProduct1).getText());
  }
  public void clickProceedToCheckout()
  {
@@ -217,7 +217,7 @@ public class CartPage
 
 		String successMessage = successElement.getText();
 		//System.out.println("Success Message: " + successMessage);
-		Assert.assertEquals(Messages.orderPlaceSuccessMessage, successMessage );
+		Assert.assertEquals(Messages.OrderPlacedSuccessfully, successMessage );
 		driver.navigate().forward();
  }
  
@@ -243,7 +243,7 @@ public class CartPage
  
  public void checkItemFromRecommendedItems() //if other product is selected in addToCart must be modified here too
  {
-	 Assert.assertEquals(ProductsDetails.descriptionOfProduct1, driver.findElement(product1FromRecommended).getText());
+	 Assert.assertEquals(ProductsDetails.DescriptionOfProduct1, driver.findElement(product1FromRecommended).getText());
  }
  
  public void readingDataAndCompareWithCheckoutData()
@@ -258,7 +258,7 @@ public class CartPage
  		String deliveryCompanyText="";
  		String deliveryMainAddressText="";
  		String deliverySecondAddressText=""; 
- 		for (int i=0;i<deliveryCompanyAndAddresses.size();i++) //because all 3 hsve the same xpath ^ I have to go through them all with a loop
+ 		for (int i=0;i<deliveryCompanyAndAddresses.size();i++) //because all 3 have the same xpath ^ I have to go through them all with a loop
  		{
  			deliveryCompanyText=deliveryCompanyAndAddresses.get(0).getText();
  			deliveryMainAddressText=deliveryCompanyAndAddresses.get(1).getText();
@@ -342,10 +342,10 @@ public class CartPage
 	 {
 		 valueproductsFromCart.add(element.getText()); 
 	 }	 
-	 System.out.println("valueproductsFromCart ="+valueproductsFromCart);
+	 //System.out.println("valueproductsFromCart ="+valueproductsFromCart);
 	 for(String element:valueproductsFromCart)
 	 {	
-		 System.out.println("produs  = "+element);
+		 //System.out.println("produs  = "+element);
 		 Assert.assertTrue(valoriListaProduse.contains(element));		 
 	 }	 
  }

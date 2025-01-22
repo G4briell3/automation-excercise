@@ -12,9 +12,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import TestData.Messages;
+import TestData.ProductsDetails;
 import Utils.PageScrool;
-
-
 
 public class ProductsPage
 {
@@ -82,13 +82,12 @@ public class ProductsPage
  public void verifySearchedProductPageText()
  {
 	 String actualTitle=driver.findElement(searchedProductsPageText).getText();
-	 String expectedTitle="SEARCHED PRODUCTS";
+	 String expectedTitle=Messages.SearchedProductsText;
 	 if (!actualTitle.contains(expectedTitle)) 
 	 {
 		    throw new AssertionError("Title mismatch: " + actualTitle);  //to avoid the pop-ups that appears near "searched products"text
 		    
-	 }
-	 //Assert.assertEquals("SEARCHED PRODUCTS", driver.findElement(searchedProductsPageText).getText());
+	 }	 
  }
  
  public void checkSearchResult()
@@ -129,7 +128,7 @@ public class ProductsPage
  
  public void verifyWomenCategoryPageTitle()
  {
-	 Assert.assertEquals("WOMEN - TOPS PRODUCTS", driver.findElement(titleWomenProducts).getText());
+	 Assert.assertEquals(ProductsDetails.CategoryWomanTops, driver.findElement(titleWomenProducts).getText());
  }
  
  public void selectTshirtsSubcategoryFromMenCategory()
@@ -140,7 +139,7 @@ public class ProductsPage
  
  public void verifyMenCategoryPageTitle()
  {
-	 Assert.assertEquals("MEN - TSHIRTS PRODUCTS", driver.findElement(titleMenProducts).getText());
+	 Assert.assertEquals(ProductsDetails.CategoryMenTshirts, driver.findElement(titleMenProducts).getText());
  }
  
  public void clickMadameCathegoryFromBrandsSidebar()
@@ -150,7 +149,7 @@ public class ProductsPage
  
  public void verifyBrandMadamePageTitle()
  {
-	 Assert.assertEquals("BRAND - MADAME PRODUCTS", driver.findElement(titleBrandMadameProducts).getText());
+	 Assert.assertEquals(ProductsDetails.BrandMadame, driver.findElement(titleBrandMadameProducts).getText());
 	 driver.findElement(productFromPage).isDisplayed();
  }
  
@@ -161,7 +160,7 @@ public class ProductsPage
  
  public void verifyBrandBibaPageTitle()
  {
-	 Assert.assertEquals("BRAND - BIBA PRODUCTS", driver.findElement(titleBrandBibaProducts).getText());
+	 Assert.assertEquals(ProductsDetails.BrandBiba, driver.findElement(titleBrandBibaProducts).getText());
 	 driver.findElement(productFromPage).isDisplayed();
  }
  

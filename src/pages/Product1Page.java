@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import TestData.Messages;
 import TestData.classes.ProductDetails;
 import TestData.classes.WriteReview;
 
@@ -109,7 +110,7 @@ public class Product1Page
   {
 	  WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(5));
 	  WebElement successMessage=wait.until(ExpectedConditions.presenceOfElementLocated(writeReviewSuccessAlert));
-	  Assert.assertEquals("Thank you for your review.", successMessage.getText());
+	  Assert.assertEquals(Messages.ReviewSuccess, successMessage.getText());
 	  
   }
 } 

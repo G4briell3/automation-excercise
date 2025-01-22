@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import TestData.Messages;
 import TestData.classes.LoginData;
 import TestData.classes.SignupData;
 import Utils.RandomGenerator;
@@ -74,16 +75,16 @@ public class SignupLoginPage
  
  public void checkLoginHeaderText()
  {
-	 Assert.assertEquals("Login to your account", driver.findElement(loginHeaderText).getText());
+	 Assert.assertEquals(Messages.LoginText, driver.findElement(loginHeaderText).getText());
  }
  
  public void checkLoginErrorMessage()
  {
-	 Assert.assertEquals("Your email or password is incorrect!", driver.findElement(loginErrorMessage).getText());
+	 Assert.assertEquals(Messages.LoginError, driver.findElement(loginErrorMessage).getText());
  }
  
  public void checkSignupErrorMessage()
  {
-	 Assert.assertEquals("Email Address already exist!", driver.findElement(signupErrorMessage).getText());
+	 Assert.assertEquals(Messages.SignUpError, driver.findElement(signupErrorMessage).getText());
  }
 }

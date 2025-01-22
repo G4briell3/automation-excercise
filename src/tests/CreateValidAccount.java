@@ -2,6 +2,7 @@ package tests;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.Order;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -18,7 +19,7 @@ public class CreateValidAccount extends BaseTest
   }
   
   @Test
-  public void test1() throws InterruptedException //create user after running test1
+  public void createAccount() throws InterruptedException //create user after running test1
   {
 	  mainPage.checkIconsOnPage();
 	  mainPage.clickSignupLoginButton();

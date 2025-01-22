@@ -43,7 +43,7 @@ public class AccountConfirmationPage
   
   public void checkAccountConfirmationMessage()
   {
-	  Assert.assertEquals( Messages.accountCreated, driver.findElement(creationConfirmationMessage).getText());
+	  Assert.assertEquals( Messages.AccountCreated, driver.findElement(creationConfirmationMessage).getText());
   }
   
   public void clickContinue()
@@ -53,6 +53,6 @@ public class AccountConfirmationPage
   
   public void checkAccountDeletionMessage()
   {
-	  Assert.assertEquals(Messages.accountDeleted, driver.findElement(deletionConfirmationMessage).getText());
+	  Assert.assertEquals(Messages.AccountDeleted, driver.findElement(deletionConfirmationMessage).getText());
   }
 }

@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-
+import TestData.Messages;
 
 public class TestCasesPage 
 {
@@ -35,6 +35,6 @@ public class TestCasesPage
 		 driver.findElement(apiTestingIcon).isDisplayed();
 		 driver.findElement(videoTutorialsIcon).isDisplayed();
 		 driver.findElement(contactUsIcon).isDisplayed();
-         Assert.assertEquals("TEST CASES", driver.findElement(pageTitle).getText());
+         Assert.assertEquals(Messages.TestCasesText, driver.findElement(pageTitle).getText());
   }
 }
