@@ -16,7 +16,7 @@ public class TestCase9 extends BaseTest
  }
  
  @Test
- public void test9()
+ public void test9() //Search Product
  {
 	 mainPage.clickProducts();
 	 productsPage.checkItemsOnPage();
