@@ -16,7 +16,7 @@ public class TestCase20 extends BaseTest
   }
   
   @Test
-  public void test20() 
+  public void test20()  //Search Products and Verify Cart After Login
   {
 	  mainPage.clickProducts();
 	  productsPage.checkItemsOnPage();
