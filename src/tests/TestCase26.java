@@ -17,7 +17,7 @@ public class TestCase26 extends BaseTest
   }
   
   @Test
-  public void test26() 
+  public void test26() // Verify Scroll Up without 'Arrow' button and Scroll Down functionality
   {
 	  PageScrool.ScroolDown(driver);	
 	  mainPage.checkSubscriptionText();
