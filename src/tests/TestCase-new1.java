@@ -24,6 +24,12 @@ public void actionTest() //1.Log in. 2.Add product to cart. 3. Log out. 4. Log i
     signupLoginPage.checkLoginVisibility();
     signupLoginPage.checkIconsOnPage();
     signupLoginPage.enterLoginDetails(loginInformation);	
-	  mainPage.checkAccountLogin(loginInformation);
+    mainPage.checkAccountLogin(loginInformation);
+    mainPage.clickProducts();
+    productsPage.clickAddToCartFirstProduct();
+    productsPage.clickContinueShoppingModal();
+    productsPage.clickAddToCartSecondProduct();
+    productsPage.clickContinueShoppingModal();
+    productsPage.
     
 
