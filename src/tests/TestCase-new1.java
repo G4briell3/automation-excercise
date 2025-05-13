@@ -30,6 +30,14 @@ public void actionTest() //1.Log in. 2.Add product to cart. 3. Log out. 4. Log i
     productsPage.clickContinueShoppingModal();
     productsPage.clickAddToCartSecondProduct();
     productsPage.clickContinueShoppingModal();
-    productsPage.
+    productsPage.clickCartIcon();
+    cartPage.checkFirstTwoProductsInCart();
+    cartPage.clickLogout();
+    signupLoginPage.enterLoginDetails(loginInformation);	
+    mainPage.clickCartIcon();
+    cartPage.checkFirstTwoProductsInCart();
+  }
+    
+    
     
 
