@@ -16,7 +16,7 @@ public class TestCase8 extends BaseTest
   }
   
   @Test
-  public void test8()
+  public void test8() //Verify All Products and product detail page
   {
 	  mainPage.clickProducts();
 	  productsPage.checkItemsOnPage();
