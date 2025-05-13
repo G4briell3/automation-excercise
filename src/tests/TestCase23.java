@@ -17,7 +17,7 @@ public class TestCase23  extends BaseTest
   }
   
   @Test
-  public void test23() throws InterruptedException
+  public void test23() throws InterruptedException //Verify address details in checkout page
   {
 	  mainPage.clickSignupLoginButton();
 	  signupLoginPage.checkIconsOnPage();
