@@ -18,7 +18,7 @@ public class TestCase10 extends BaseTest
  }
  
  @Test
- public void test10() 
+ public void test10() //subscription test
  {
 	 PageScrool.ScroolDown(driver);	
      mainPage.checkSubscriptionText();
