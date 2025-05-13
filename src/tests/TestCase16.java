@@ -16,7 +16,7 @@ public class TestCase16 extends BaseTest
   }
   
   @Test
-  public void test16() throws InterruptedException
+  public void test16() throws InterruptedException //Place Order: Login before Checkout
   {
 		 mainPage.clickSignupLoginButton();
 		 signupLoginPage.checkLoginVisibility();
