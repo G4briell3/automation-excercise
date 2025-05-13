@@ -21,6 +21,9 @@ pulic class PersistentClassActions extends BaseTest
 public void actionTest() //1.Log in. 2.Add product to cart. 3. Log out. 4. Log in again. Verification: Cart still contains previously added product.
   {
     mainPage.clickSignupLoginButton();
+    signupLoginPage.checkLoginVisibility();
     signupLoginPage.checkIconsOnPage();
-
+    signupLoginPage.enterLoginDetails(loginInformation);	
+	  mainPage.checkAccountLogin(loginInformation);
+    
 
