@@ -16,7 +16,7 @@ public class TestCase6 extends BaseTest
   }
 	
 	@Test
-	public void test6() throws InterruptedException
+	public void test6() throws InterruptedException //Contact Us Form
 	{
 		mainPage.clickContacUs();
 		contactUsPage.checkGetInTouchVisibility();
