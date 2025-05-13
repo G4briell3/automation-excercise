@@ -16,5 +16,11 @@ pulic class PersistentClassActions extends BaseTest
     driver.get(URL.MainPage);
     mainPage.checkIconsOnPage();
   }
-  
+
+@Test
+public void actionTest() //1.Log in. 2.Add product to cart. 3. Log out. 4. Log in again. Verification: Cart still contains previously added product.
+  {
+    mainPage.clickSignupLoginButton();
+    signupLoginPage.checkIconsOnPage();
+
 
