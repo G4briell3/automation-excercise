@@ -361,4 +361,9 @@ public class CartPage
 	 driver.findElement(downloadInvoiceButton).isDisplayed();
 	 driver.findElement(downloadInvoiceButton).click();
  }
+
+ public void clickLogoutButton()
+ {
+	 driver.findElement(logoutButton).click();
+ }
 }
