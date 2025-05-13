@@ -48,7 +48,7 @@ public class ProductsPage
  private By madameCategoryFromBrandsSidebar=By.xpath("//a[@href=\"/brand_products/Madame\"]");
  private By bibaCategoryFromBrandsSidebar=By.xpath("//a[@href=\"/brand_products/Biba\"]");
  private By productFromPage=By.xpath("//div[@class=\"col-sm-4\"]");
- 
+ private By logoutButton=By.xpath("//div[@class="shop-menu pull-right"]/descendant::a[@href="/logout"]");
  
  public void checkItemsOnPage()
  {
@@ -195,4 +195,9 @@ public class ProductsPage
     	clickContinueShoppingModal();    	
     }
  }
+public void clickLogout()
+	{
+		driver.findElement(logoutButton).click;
+	}
+		
 }
