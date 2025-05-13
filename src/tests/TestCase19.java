@@ -16,7 +16,7 @@ public class TestCase19 extends BaseTest
  }
  
  @Test
- public void test19()
+ public void test19() //View & Cart Brand Products
  {
 	 mainPage.clickProducts();
 	 productsPage.checkItemsOnPage();
