@@ -16,7 +16,7 @@ public class TestCase7 extends BaseTest
  }
  
  @Test
- public void test7()
+ public void test7() //Verify Test Cases Page
  {
 	 mainPage.clickTestCases();
 	 testCasesPage.checkIconsAndPage();
