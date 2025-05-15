@@ -1,3 +1,19 @@
+Test Case new1 : Persistent Cart Across Sessions
+  1.Log in.
+  2. Add product to cart.
+  3. Log out.
+  4. Log in again.
+  Verification: Cart still contains previously added product.
+
+Test case new 2 : Stress Test: Bulk Add to Cart
+ Description: Add many products (e.g., 10+) to the cart and validate cart behavior.
+   1. Loop through product listings.
+    2. Add 10+ unique items.
+Verification:
+Cart page displays all items.
+Prices total correctly.
+UI remains responsive.
+
 
 Test Case 1: Register User
 
@@ -381,9 +397,4 @@ Test Case 26: Verify Scroll Up without 'Arrow' button and Scroll Down functional
     6. Scroll up page to top
     7. Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen
 
-Test Case new1 : Persistent Cart Across Sessions
-  1.Log in.
-  2. Add product to cart.
-  3. Log out.
-  4. Log in again.
-  Verification: Cart still contains previously added product.
+
