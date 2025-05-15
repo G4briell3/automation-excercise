@@ -199,5 +199,36 @@ public void clickLogout()
 	{
 		driver.findElement(logoutButton).click;
 	}
-		
+public void addBulkToCart()
+	{
+		for(int x=0;x<=8;x++)
+			{
+	 WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+	 Actions actions = new Actions(driver);
+	 WebElement product1Location=driver.findElement(By.xpath("//div[@class=\"productinfo text-center\"]/a[@class=\"btn btn-default add-to-cart\"][@data-product-id=\"x\"]"));
+	 //PageScrool.ScrrolToElement(product1Location);
+	 actions.moveToElement(product1Location).perform();
+	 WebElement addToCartButton=driver.findElement(By.xpath("//div[@class=\"overlay-content\"]/a[@class=\"btn btn-default add-to-cart\"][@data-product-id=\"x\"]"));
+	 WebElement addToCartButtonWait=wait.until(ExpectedConditions.visibilityOf(addToCartButton));
+	 addToCartButtonWait.click();
+				
+	 WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+	 WebElement continueButton=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class=\"btn btn-success close-modal btn-block\"]")));
+	 continueButton.click();
+			} // de testat aici 
+				for(int x=11;x<=13;x++)
+			{
+	 WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+	 Actions actions = new Actions(driver);
+	 WebElement product1Location=driver.findElement(By.xpath("//div[@class=\"productinfo text-center\"]/a[@class=\"btn btn-default add-to-cart\"][@data-product-id=\"x\"]"));
+	 //PageScrool.ScrrolToElement(product1Location);
+	 actions.moveToElement(product1Location).perform();
+	 WebElement addToCartButton=driver.findElement(By.xpath("//div[@class=\"overlay-content\"]/a[@class=\"btn btn-default add-to-cart\"][@data-product-id=\"x\"]"));
+	 WebElement addToCartButtonWait=wait.until(ExpectedConditions.visibilityOf(addToCartButton));
+	 addToCartButtonWait.click();
+				
+	 WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+	 WebElement continueButton=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class=\"btn btn-success close-modal btn-block\"]")));
+	 continueButton.click();
+			}  de testat aici si de continuat 
 }
